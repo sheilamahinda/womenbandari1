@@ -111,7 +111,7 @@ export default function DashboardLayout({ children }) {
 
   const logOutHandler = async () => {
     try {
-      const res = await axios.get(`http://localhost:3005/api/v1/user/logout`);
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/api/v1/user/logout`);
       deleteCookie();
       window.localStorage.setItem("role", "");
       window.localStorage.setItem("username", "");
