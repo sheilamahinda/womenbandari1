@@ -18,22 +18,41 @@ const gradesRoute = require("./routes/grades.js");
 require("dotenv").config();
 
 const app = express();
+
+// Define allowed origins for CORS
+const allowedOrigins = [
+  process.env.CLIENT_URI, // Main client URI
+  'https://womenbandari1-git-sheilamahind-9b2b3e-sheilas-projects-6fbe7294.vercel.app' // Branch deployment URI
+];
+
 app.use(express.static("public"));
 
+// Updated CORS configuration to handle multiple origins
 app.use(
   cors({
-    origin: process.env.CLIENT_URI,
+    origin: function(origin, callback) {
+      // Allow requests with no origin (like mobile apps, curl requests)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        console.log(`Origin ${origin} not allowed by CORS`);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ["POST", "GET", "DELETE", "UPDATE"],
     credentials: true,
   })
 );
 
 app.use(express.json());
-app.use(express.json());
 app.use(cookieParser());
+
 if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
 }
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -49,6 +68,7 @@ app.use(
     },
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.authenticate("session"));
