@@ -22,6 +22,7 @@ export const AdminsGrade = () => {
   const { grades, setGrades, updateLoading, loading } =
     useContext(ElearningContext);
   const [year, setYear] = useState("");
+  
   const [admNumber, setAdmNumber] = useState("");
   const [sem1, setSem1] = useState("");
   const [sem2, setSem2] = useState("");
