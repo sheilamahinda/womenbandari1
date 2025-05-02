@@ -17,7 +17,7 @@ const useGetMessages = () => {
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get(
-          `http://localhost:3005/api/v1/message/${selectedUser?._id}`
+          `${process.env.REACT_APP_BACKEND_URI/api/v1/message/${selectedUser?._id}`
         );
         dispatch(setMessages(res.data));
       } catch (error) {
