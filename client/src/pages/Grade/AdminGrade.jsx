@@ -152,7 +152,7 @@ export const AdminsGrade = () => {
     try {
       updateLoading(true);
 
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URI/api/editGrade`, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URI}/api/editGrade`, {
         id,
         year,
         admNumber,
@@ -208,7 +208,7 @@ export const AdminsGrade = () => {
     try {
       updateLoading(true);
       const response = await axios.delete(
-        `${process.env.REACT_APP_BACKEND_URI/api/grades/${id}`
+        `${process.env.REACT_APP_BACKEND_URI}/api/grades/${id}`
       );
       if (response.data.success) {
         setGrades(grades.filter((g) => g.id !== id));
