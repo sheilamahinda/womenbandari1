@@ -5,6 +5,7 @@ import { setOtherUsers } from "../redux/userSlice";
 
 const useGetOtherUsers = () => {
   const dispatch = useDispatch();
+  
   useEffect(() => {
     const fetchOtherUser = async () => {
       try {
