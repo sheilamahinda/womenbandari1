@@ -126,7 +126,7 @@ const Resources = () => {
       updateLoading(true);
 
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URI}/getRecordings`,
+        `${process.env.REACT_APP_BACKEND_URI}/api/getRecordings`,
         {
           withCredentials: true,
         }
@@ -202,7 +202,7 @@ const Resources = () => {
     try {
       updateLoading(true);
       const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URI}/addRecording`,
+        `${process.env.REACT_APP_BACKEND_URI}/api/addRecording`,
         formData,
         {
           withCredentials: true,
