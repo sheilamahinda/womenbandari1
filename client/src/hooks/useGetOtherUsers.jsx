@@ -10,7 +10,7 @@ const useGetOtherUsers = () => {
     const fetchOtherUser = async () => {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URI/api/v1/user/`, {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/api/v1/user/`, {
           withCredentials: true,
         });
         dispatch(setOtherUsers(res.data));
