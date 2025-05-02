@@ -17,7 +17,7 @@ const SendInput = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:3005/api/v1/message/send/${selectedUser?._id}`,
+        `${process.env.REACT_APP_BACKEND_URI}/api/v1/message/send/${selectedUser?._id}`,
         { message },
         {
           headers: {
