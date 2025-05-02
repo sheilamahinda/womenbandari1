@@ -16,6 +16,7 @@ const useGetMessages = () => {
     const fetchMessages = async () => {
       try {
         axios.defaults.withCredentials = true;
+        
         const res = await axios.get(
           `${process.env.REACT_APP_BACKEND_URI/api/v1/message/${selectedUser?._id}`
         );
