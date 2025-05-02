@@ -32,7 +32,7 @@ export const AdminsGrade = () => {
     try {
       updateLoading(true);
 
-      const response = await axios.get("http://localhost:3005/api/getGrades");
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/api/getGrades`);
       let { grades } = response.data;
 
       // Process each student's grades to only show the latest available year
