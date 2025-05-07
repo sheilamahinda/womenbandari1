@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
-import "./SignUp.css"; // You will define your custom styles here
+import { Link, useNavigate } from "react-router-dom";
+import "./SignUp.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { toast } from "sonner";
@@ -20,13 +20,10 @@ function SignUp() {
     username: "",
     password: "",
     confirmPassword: "",
-    gender: "",
+    gender: "female", // Default gender as female since platform is only for women
     admNumber: "",
   });
 
-  const checkboxHandler = (gender) => {
-    setUser({ ...user, gender });
-  };
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -53,13 +50,12 @@ function SignUp() {
       username: "",
       password: "",
       confirmPassword: "",
-      gender: "",
+      gender: "female",
     });
   };
 
   const handleChanges = (e) => {
     const { name, value } = e.target;
-
     setSignUpDetails((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -189,59 +185,14 @@ function SignUp() {
                   setUser({ ...user, confirmPassword: e.target.value })
                 }
                 className="w-full input input-bordered h-10 bg-white"
-                type="Confirm Password"
+                type="password"
                 placeholder="Again Enter Your Password "
               />
-            </div>
-            <div className="flex items-center my-4">
-              <div className="flex items-center">
-                <p>Male</p>
-                <input
-                  checked={user.gender === "male"}
-                  onChange={() => checkboxHandler("male")}
-                  type="checkbox"
-                  defaultChecked
-                  className="checkbox mx-2"
-                />
-              </div>
-              <div className="flex items-center">
-                <p>Female</p>
-                <input
-                  checked={user.gender === "female"}
-                  onChange={() => checkboxHandler("female")}
-                  type="checkbox"
-                  defaultChecked
-                  className="checkbox mx-2"
-                />
-              </div>
             </div>
 
             <button type="submit" className="login-btn">
               Register
             </button>
-
-            {/* <input
-              type="text"
-              name="email"
-              placeholder="Enter email or user name"
-              value={signUpDetails.email}
-              onChange={handleChanges}
-            />
-            <input
-              type="text"
-              name="admNumber"
-              placeholder="Enter your Admission Number"
-              value={signUpDetails.admNumber}
-              onChange={handleChanges}
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={signUpDetails.password}
-              onChange={handleChanges}
-            />
-      */}
           </form>
           <div className="or">
             <p></p>
